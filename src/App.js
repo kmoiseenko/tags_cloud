@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, BrowserRouter, Route, Redirect, Link} from 'react-router-dom';
+import {Switch, BrowserRouter, Route} from 'react-router-dom';
 
 import Home from './Home/Home';
 import Tag from './Tag/Tag';
