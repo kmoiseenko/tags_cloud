@@ -4,6 +4,26 @@
 	box-sizing: border-box;
 }
 
+ul {
+	list-style: none;
+}
+
+ul ul {
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+ul li + li {
+	margin-top: 5px;
+}
+
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -17,4 +37,12 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 	monospace;
+}
+
+.text-cap {
+	text-transform: capitalize;
+}
+
+.text-center {
+	text-align: center;
 }
