@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import './Home.css';
 
@@ -10,12 +11,12 @@ const Home = () => {
 			<ul>
 				{data.map((item) =>
 					<li key={item.id}>
-						<a
-							href={item.id}
+						<Link
+							to={item.id}
 							style={{'fontSize': item.sentimentScore / 2}}
 						>
 						{item.label}
-						</a>
+						</Link>
 					</li>
 				)}
 			</ul>
