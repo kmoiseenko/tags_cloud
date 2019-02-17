@@ -1,0 +1,14 @@
+.tag {
+	width: 350px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 20px;
+}
+
+.tag-row {
+	display: flex;
+	justify-content: space-between;
+	margin: 5px 0;
+	font-size: 18px;
+}
