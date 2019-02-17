@@ -13,6 +13,10 @@ const Home = () => {
 			fontSize = 14;
 		}
 
+		if (fontSize > 100) {
+			fontSize = 100;
+		}
+
 		return (
 			<li key={item.id}>
 				<Link
