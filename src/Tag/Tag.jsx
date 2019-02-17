@@ -5,34 +5,22 @@ import './Tag.css';
 import API from '../data/tags_cloud.json';
 
 const Tag = ({ match }) => {
-	const tagId = match.params.id;
-	let tag = null;
-
-	for(let i = 0; i < API.length; i++) {
-		if(API[i].id === tagId) {
-			tag = API[i]
-			break;
-		}
-	}
+	const tagIdFromParams = match.params.id;
+	let tag = API.find(item => item.id === tagIdFromParams);
 
 	if(tag) {
-		let TotalMentions = null;
-		let pageTypeList = [];
-
-		for(let key in tag.sentiment) {
-			TotalMentions += tag.sentiment[key]
-		}
-
-		for(let key in tag.pageType) {
-			pageTypeList.push(
-				<li key={tagId + key}>{key}: {tag.pageType[key]}</li>
-			);
-		}
+		let totalMentions = Object.values(tag.sentiment).reduce((sum, value) => {
+			return sum + value;
+		});
+		const pageTypeList = Object.keys(tag.pageType).map(key => {
+			const val = tag.pageType[key];
+			return <li key={key}>{key}: {val}</li>
+		});
 
 		return(
 			<ul>
 				<li>Label: {tag.label}</li>
-				<li>Total mentions: {TotalMentions}</li>
+				<li>Total mentions: {totalMentions}</li>
 				<li>Positive Mentions: {tag.sentiment.positive}</li>
 				<li>Neutral Mentions: {tag.sentiment.neutral}</li>
 				<li>Negative Mentions: {tag.sentiment.negative}</li>
