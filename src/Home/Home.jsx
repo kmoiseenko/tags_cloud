@@ -5,17 +5,18 @@ import './Home.css';
 
 import data from '../data/tags_cloud.json';
 
+const MIN_FONT_SIZE = 14;
+const MAX_FONT_SIZE = 100;
+
+const getFontSize = (value) => {
+	if(value < MIN_FONT_SIZE) return MIN_FONT_SIZE;
+	if(value > MAX_FONT_SIZE) return MAX_FONT_SIZE;
+	return value;
+}
+
 const Home = () => {
 	const tagsList = data.map(item => {
-		let fontSize = item.sentimentScore / 2;
-
-		if (fontSize < 14) {
-			fontSize = 14;
-		}
-
-		if (fontSize > 100) {
-			fontSize = 100;
-		}
+		const fontSize = getFontSize(item.sentimentScore / 2);
 
 		return (
 			<li key={item.id}>
