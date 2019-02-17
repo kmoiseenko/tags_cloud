@@ -6,19 +6,29 @@ import './Home.css';
 import data from '../data/tags_cloud.json';
 
 const Home = () => {
+	const tagsList = data.map(item => {
+		let fontSize = item.sentimentScore / 2;
+
+		if (fontSize < 14) {
+			fontSize = 14;
+		}
+
+		return (
+			<li key={item.id}>
+				<Link
+					to={encodeURIComponent(item.id)}
+					style={{'fontSize': fontSize}}
+				>
+				{item.label}
+				</Link>
+			</li>
+		);
+	});
+
 	return (
 		<div className="App">
-			<ul>
-				{data.map((item) =>
-					<li key={item.id}>
-						<Link
-							to={item.id}
-							style={{'fontSize': item.sentimentScore / 2}}
-						>
-						{item.label}
-						</Link>
-					</li>
-				)}
+			<ul className="app_tags-list">
+				{tagsList}
 			</ul>
 		</div>
 	);
